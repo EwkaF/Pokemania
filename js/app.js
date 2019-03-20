@@ -1,7 +1,7 @@
 $(function() {
     
     var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
-    var nextUrl = url+'/'+'?limit=10&offset='+ offset;
+    var nextUrl = url+'/'+'?limit=10&offset=';
     var evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
     var offset = 10;
 
@@ -12,12 +12,11 @@ $(function() {
        for( var i = 0; i < pokemon.length; i++){
             let li = $('<li>');
             li.addClass('row')
-            // let img = $('<img>')
             let name = $('<h3>, {class: "name col"}');
             name.text(pokemon[i].name);
             let moreInfo = $('<button>Pokaż</button>');
             moreInfo.addClass('showInfo col');
-            moreInfo.attr('id', i+1);
+            moreInfo.attr('id', i+1+offset);
             li.append(name);
             li.append(moreInfo);
             $('#pokemonList').append(li)  
@@ -53,6 +52,7 @@ $(function() {
                 defense.text(onePokemon.stats[3].effort);
 
             }
+
            $.ajax({
              url: 'https://pokeapi.co/api/v2/pokemon' +'/' + (thisButton[0].id)
 
@@ -82,23 +82,12 @@ loadPokemon(response.results)
 }
 
 $(".next").on('click',  function() {
-    offset +=10;
+    offset = offset + 10;
     console.log(offset);
-    url = url + '/'+'&offset='+ offset;
- console.log("Kliknięto przycisk");
- loadContent();
+    url = nextUrl + offset;
+    console.log("Kliknięto przycisk");
+    loadContent();
  
- // $.ajax({
- //     url: nextUrl
- // }).done(function(response){
- //     loadPokemon(response.results)
- // }).fail(function(message){
- //     console.log(message)
- // })
-
-
-
-
 });
 
 loadContent();
