@@ -7,6 +7,19 @@ $(function() {
 
     function loadContent(){
 
+    function loadPagination(number){
+        $('#pagination').html('');
+        for (var i = 0; i < number.count/10; i++){
+            let paginationButton = $('<button></button>');
+            paginationButton.text(i);
+            paginationButton.addClass('paginationButton');
+            paginationButton.attr('id', i);
+            $('#pagination').append(paginationButton);
+            
+        }
+        
+    }
+
     function loadPokemon(pokemon){
             
        for( var i = 0; i < pokemon.length; i++){
@@ -84,8 +97,9 @@ url: url
 
 }).done(function(response){
     $('#pokemonList').html("");
-    console.log(response)
-loadPokemon(response.results)
+    console.log(response.count)
+    loadPagination(response)
+loadPokemon(response.results);
 }).fail(function(message){
     console.log(message)
 })
@@ -115,64 +129,16 @@ $(".prev").on('click',  function() {
  
 });
 
-loadContent();
+$('#pagination').on('click','.paginationButton', function(e){
+    console.log($(this).attr('id'));
+    offset = $(this).attr('id') * 10;
+    url = nextUrl + offset;
+    loadContent();
+
+
 })
 
 
 
-
-
-
-
-
-// $(function() {
-//     let url = 'https://pokeapi.co/api/v2/pokemon/1';
-//     let hpUrl = 'https://pokeapi.co/api/v2/stat/1/';
-//     let evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
-
-//     function insertContent(pokemon) {
-//         let nameEl = $('h1:first-child');
-//         let hpEl = $('li:first-child');
-//         let attackEl = $('li:nth-child(2)');
-//         let defenceEl = $('li:nth-child(3)');
-
-//         nameEl.append(pokemon.name);
-//         hpEl.append(pokemon.stats[5].base_stat);
-//         attackEl.append(pokemon.stats[4].base_stat);
-//         defenceEl.append(pokemon.stats[3].base_stat);
-//     }
-
-//     function loadData() {
-//         $.ajax({
-//             url: url,
-//             type: 'GET'
-//         }).done(function(response){
-//             insertContent(response);
-//         }).fail(function(error) {
-//             console.log(error);
-//         })
-//     }
-
-//     loadData();
-
-//     function insertEvolution(first, second) {
-//         let evolution = $('p.evolution-chain');
-
-//         evolution.append(first + ' &rsaquo; ' + second);
-//     }
-
-
-//     function loadEvolution() {
-//         $.ajax({
-//             url: evolutionUrl,
-//             type: 'GET'
-//         }).done(function(response){
-//             insertEvolution(response.chain.evolves_to[0].species.name, response.chain.evolves_to[0].evolves_to[0].species.name);
-//         }).fail(function(error) {
-//             console.log(error);
-//         })
-//     }
-
-//     loadEvolution();
-
-// });
+loadContent();
+})
