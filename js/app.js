@@ -10,7 +10,7 @@ $(function() {
     function loadPokemon(pokemon){
             
        for( var i = 0; i < pokemon.length; i++){
-           
+
             let id = 0;
             if(offset === 0){
                 id = i+1;
@@ -84,7 +84,7 @@ url: url
 
 }).done(function(response){
     $('#pokemonList').html("");
-    console.log(response.results)
+    console.log(response)
 loadPokemon(response.results)
 }).fail(function(message){
     console.log(message)
@@ -93,6 +93,21 @@ loadPokemon(response.results)
 
 $(".next").on('click',  function() {
     offset = offset + 10;
+    console.log(offset);
+    url = nextUrl + offset;
+    console.log("Kliknięto przycisk");
+    loadContent();
+ 
+});
+
+
+$(".prev").on('click',  function() {
+    if( offset === 0){
+        offset = 0;
+    }else{
+        offset = offset - 10;
+    }
+    
     console.log(offset);
     url = nextUrl + offset;
     console.log("Kliknięto przycisk");
