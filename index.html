@@ -10,31 +10,42 @@
 </head>
 
 <body>
+
+  
+
   <div class="container">
-<form>
+      <header>
+          <h1>Pokeomania</h1>
+        </header>
+    <form>
     <input type="text" placeholder="Szukaj..">
-</form>
+    </form>
 
+<div class="main-page">
 
-<div class="pokemon-container">
-  <ol id="pokemonList">Lista pokemonów:</ol>
+    <div class="pokemon-container">
+        <ol id="pokemonList">Lista pokemonów:</ol>
+    
+        <button class="prev">Poprzednia</button>
+        <button class="next">Następna</button>
+    
+      </div>
 
-  <button class="prev">Poprzednia</button>
-  <button class="next">Następna</button>
-
+      <section class="pokemon-details">
+          <h1 class = "name">Nazwa: <strong></strong></h1>
+          <img class ="pokemon-image" src ="">
+          <h3 class = "type">Typ: <strong></strong></h3>
+          <h3 class ="hp">HP: <strong></strong></h3>
+          <h3 class ="attack">Atak: <strong></strong></h3>
+          <h3 class ="defense">Obrona: <strong></strong></h3>
+      
+        </section>
 </div>
+  
 
-<div id="pagination"></div>
+  <div id="pagination"></div>
 
-<section class="pokemon-details">
-  <h1 class = "name">Nazwa: <strong></strong></h1>
-  <img class ="pokemon-image" src ="">
-  <h3 class = "type">Typ: <strong></strong></h3>
-  <h3 class ="hp">HP: <strong></strong></h3>
-  <h3 class ="attack">Atak: <strong></strong></h3>
-  <h3 class ="defense">Obrona: <strong></strong></h3>
 
-</section>
 
 </div>
 </body>

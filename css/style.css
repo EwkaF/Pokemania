@@ -6,7 +6,7 @@
 }
 .container{
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 5px;
 }
@@ -21,6 +21,27 @@
     /*border:1px solid black;*/
 }
 
+.main-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#pokemonList{
+    list-style-type: none;
+}
+#pokemonList li{
+    padding:10px;
+}
+.pokemon-details{
+    border: 4px solid blue;
+    width: 50%;
+}
+
+.paginationButton{
+    min-width:30px;
+    padding: 5px;
+    margin:1px;
+}
 img{
     width: 100%;
     max-width: 250px;

@@ -5,6 +5,8 @@ $(function() {
     var evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
     var offset = 0;
 
+    $('.pokemon-details').hide();
+
     function loadContent(){
 
     function loadPagination(number){
@@ -58,11 +60,68 @@ $(function() {
                 let img = $('.pokemon-image');
                 img.attr("src", onePokemon.sprites.front_default);
                 let type =$('.type strong');
-                var typ = "";
+                let typ = "";
 
                 for (var i = 0; i < onePokemon.types.length; i++){
-                    
-                    typ += onePokemon.types[i].type.name +' ';
+                    let pokemonType = onePokemon.types[i].type.name
+                    switch (pokemonType){
+                        case "grass":
+                        pokemonType = "trawiasty"
+                        break;
+                        case "poison":
+                        pokemonType = "trujący"
+                        break;
+                        case "fire":
+                        pokemonType = "ognisty"
+                        break;
+                        case "flying":
+                        pokemonType = "powietrzny"
+                        break;
+                        case "water":
+                        pokemonType = "wodny"
+                        break;
+                        case "bug":
+                        pokemonType = "robak"
+                        break;
+                        case "normal":
+                        pokemonType = "normalny"
+                        break;
+                        case "electric":
+                        pokemonType = "elektryczny"
+                        break;
+                        case "ground":
+                        pokemonType = "ziemny"
+                        break;
+                        case "rock":
+                        pokemonType = "kamienny"
+                        break;
+                        case "fairy":
+                        pokemonType = "wróżka"
+                        break;
+                        case "fighting":
+                        pokemonType = "walczący"
+                        break;
+                        case "psychic":
+                        pokemonType = "psychiczny"
+                        break;
+                        case "steel":
+                        pokemonType = "stalowy"
+                        break;
+                        case "ice":
+                        pokemonType = "lodowy"
+                        break;
+                        case "ghost":
+                        pokemonType = "duch"
+                        break;
+                        case "dragon":
+                        pokemonType = "smok"
+                        break;
+                        case "dark":
+                        pokemonType = "mroczny"
+                        break;
+
+                    }
+                    typ += pokemonType +' ';
 
                 }
                 type.text(typ);
@@ -72,6 +131,8 @@ $(function() {
                 attack.text(onePokemon.stats[4].effort);
                 let defense = $('.defense strong');
                 defense.text(onePokemon.stats[3].effort);
+
+                $('.pokemon-details').show();
 
             }
 
