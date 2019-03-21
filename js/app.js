@@ -8,7 +8,7 @@ $(function() {
     function loadContent(){
 
     function loadPokemon(pokemon){
-
+            
        for( var i = 0; i < pokemon.length; i++){
             let li = $('<li>');
             li.addClass('row')
@@ -16,7 +16,12 @@ $(function() {
             name.text(pokemon[i].name);
             let moreInfo = $('<button>Pokaż</button>');
             moreInfo.addClass('showInfo col');
-            moreInfo.attr('id', i+1+offset);
+            if(offset <= 10){
+                moreInfo.attr('id', i+1);
+            }
+            else{
+                moreInfo.attr('id', i+1+offset);
+            }
             li.append(name);
             li.append(moreInfo);
             $('#pokemonList').append(li)  
@@ -74,6 +79,7 @@ $.ajax({
 url: url
 
 }).done(function(response){
+    $('#pokemonList').html("");
     console.log(response.results)
 loadPokemon(response.results)
 }).fail(function(message){
