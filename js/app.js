@@ -3,25 +3,29 @@ $(function() {
     var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
     var nextUrl = url+'/'+'?limit=10&offset=';
     var evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
-    var offset = 10;
+    var offset = 0;
 
     function loadContent(){
 
     function loadPokemon(pokemon){
             
        for( var i = 0; i < pokemon.length; i++){
+           
+            let id = 0;
+            if(offset === 0){
+                id = i+1;
+            }
+            else{
+                id = i + 1 + offset;
+            }
+
             let li = $('<li>');
             li.addClass('row')
             let name = $('<h3>, {class: "name col"}');
-            name.text(pokemon[i].name);
+            name.text("#"+ (id) +". " + pokemon[i].name);
             let moreInfo = $('<button>Pokaż</button>');
             moreInfo.addClass('showInfo col');
-            if(offset <= 10){
-                moreInfo.attr('id', i+1);
-            }
-            else{
-                moreInfo.attr('id', i+1+offset);
-            }
+            moreInfo.attr('id', id);
             li.append(name);
             li.append(moreInfo);
             $('#pokemonList').append(li)  
