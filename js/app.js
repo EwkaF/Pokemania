@@ -54,7 +54,7 @@ $(function() {
             thisButton = $(this)
 
             function loadPokemonDetails(onePokemon){
-               
+                $('.name span').text("#" +onePokemon.id)
                 let h1 = $('.name strong');
                 h1.text(onePokemon.species.name);
                 let img = $('.pokemon-image');
@@ -133,6 +133,10 @@ $(function() {
                 defense.text(onePokemon.stats[3].effort);
 
                 $('.pokemon-details').show();
+
+                $('.close').on('click', function(e){
+                    $('.pokemon-details').hide();
+                })
 
             }
 
