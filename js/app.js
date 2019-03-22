@@ -126,13 +126,12 @@ $(function() {
                 }
                 type.text(typ);
                 let hp = $('.hp strong');
-                hp.text(onePokemon.stats[5].effort);
+                hp.text(onePokemon.stats[5].base_stat);
                 let attack = $('.attack strong');
-                attack.text(onePokemon.stats[4].effort);
+                attack.text(onePokemon.stats[4].base_stat);
                 let defense = $('.defense strong');
-                defense.text(onePokemon.stats[3].effort);
-
-                $('.pokemon-details').show();
+                defense.text(onePokemon.stats[3].base_stat);
+               $('.pokemon-details').show();
 
                 $('.close').on('click', function(e){
                     $('.pokemon-details').hide();
