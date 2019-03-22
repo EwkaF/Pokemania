@@ -131,6 +131,13 @@ $(function() {
                 attack.text(onePokemon.stats[4].base_stat);
                 let defense = $('.defense strong');
                 defense.text(onePokemon.stats[3].base_stat);
+                let spAttack = $('.special-attack strong');
+                spAttack.text(onePokemon.stats[2].base_stat);
+                let spDefense = $('.special-defense strong');
+                spDefense.text(onePokemon.stats[1].base_stat);
+                let speed = $('.speed strong');
+                speed.text(onePokemon.stats[0].base_stat);
+
                $('.pokemon-details').show();
 
                 $('.close').on('click', function(e){
