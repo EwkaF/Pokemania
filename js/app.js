@@ -36,7 +36,8 @@ $(function() {
 
             let li = $('<li>');
             li.addClass('row')
-            let name = $('<h3>, {class: "name col"}');
+            let name = $('<h3>, {class: "name"}');
+            name.addClass('col');
             name.text("#"+ (id) +". " + pokemon[i].name);
             let moreInfo = $('<button>Pokaż</button>');
             moreInfo.addClass('showInfo col');
@@ -153,10 +154,16 @@ $(function() {
 
            }).done(function(response){
             console.log(response);
-            loadPokemonDetails(response);
-
+            if(typeof response === "object"){
+                loadPokemonDetails(response);
+            }else{
+                
+            }
+            
            }).fail(function(message){
-            console.log(message)
+            console.log(message);
+            console.log("brak danych")
+            
            })
        })
     }
