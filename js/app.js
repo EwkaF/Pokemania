@@ -54,7 +54,7 @@ $(function() {
             thisButton = $(this)
 
             function loadPokemonDetails(onePokemon){
-                $('.name span').text("#" +onePokemon.id)
+                $('.name span').text("#" + onePokemon.id)
                 let h1 = $('.name strong');
                 h1.text(onePokemon.species.name);
                 let img = $('.pokemon-image');
@@ -142,23 +142,22 @@ $(function() {
 
                 $('.close').on('click', function(e){
                     $('.pokemon-details').hide();
-                })
+                });
+                
 
             }
 
+            let pokemonId = thisButton[0].id
            $.ajax({
-             url: 'https://pokeapi.co/api/v2/pokemon' +'/' + (thisButton[0].id)
+             url: 'https://pokeapi.co/api/v2/pokemon' +'/' + pokemonId
 
            }).done(function(response){
             console.log(response);
-            loadPokemonDetails(response)
-
-
+            loadPokemonDetails(response);
 
            }).fail(function(message){
             console.log(message)
            })
-
        })
     }
 
@@ -176,29 +175,7 @@ loadPokemon(response.results);
 })
 }
 
-$(".next").on('click',  function() {
-    offset = offset + 10;
-    console.log(offset);
-    url = nextUrl + offset;
-    console.log("Kliknięto przycisk");
-    loadContent();
- 
-});
 
-
-$(".prev").on('click',  function() {
-    if( offset === 0){
-        offset = 0;
-    }else{
-        offset = offset - 10;
-    }
-    
-    console.log(offset);
-    url = nextUrl + offset;
-    console.log("Kliknięto przycisk");
-    loadContent();
- 
-});
 
 $('#pagination').on('click','.paginationButton', function(e){
     console.log($(this).attr('id'));
