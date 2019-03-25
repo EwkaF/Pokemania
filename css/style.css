@@ -38,6 +38,7 @@ header span{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px;
 }
 .pokemon-container{
@@ -45,6 +46,7 @@ header span{
 }
 #pokemonList{
     list-style-type: none;
+    min-width: 280px;
 }
 #pokemonList li{
     padding:18px;
@@ -65,6 +67,7 @@ header span{
     border: 10px solid rgb(252, 249, 163);
     border-radius: 10%;
     width: 50%;
+    min-width: 280px;
 }
 .pokemon-details-header{
     display: flex;
@@ -91,7 +94,6 @@ header span{
     cursor: pointer;
     font-size:24px;
     padding: 12px 16px;
-    /* transform: translate(0%, -50%); */
   }
 
 .paginationButton{

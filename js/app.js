@@ -153,12 +153,8 @@ $(function() {
              url: 'https://pokeapi.co/api/v2/pokemon' +'/' + pokemonId
 
            }).done(function(response){
-            console.log(response);
-            if(typeof response === "object"){
                 loadPokemonDetails(response);
-            }else{
-                
-            }
+            
             
            }).fail(function(message){
             console.log(message);
