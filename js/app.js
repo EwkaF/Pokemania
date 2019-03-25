@@ -148,15 +148,32 @@ $(function() {
 
             }
 
+            function loadError(){
+                $('.name span').text("Brak danych");
+                $('.pokemon-image').attr('src',"logo.png");
+                $('.name strong').text("");
+                $('.type strong').text("")
+                $('.pokemon-details').show();
+
+                $('.close').on('click', function(e){
+                    $('.pokemon-details').hide();
+                });
+            }
+
             let pokemonId = thisButton[0].id
            $.ajax({
              url: 'https://pokeapi.co/api/v2/pokemon' +'/' + pokemonId
 
            }).done(function(response){
                 loadPokemonDetails(response);
-            
-            
            }).fail(function(message){
+               loadError()
+            // $('.name span').text("Brak danych");
+            // $('.name strong').text("");
+            // $('.pokemon-image').attr('src',"");
+            //    let noData = $('li');
+            //    noData.text("Brak danych");
+            //    $('.pokemon-details').append(noData)
             console.log(message);
             console.log("brak danych")
             
