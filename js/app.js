@@ -154,6 +154,13 @@ $(function() {
                 $('.name strong').text("");
                 $('.type strong').text("")
                 $('.pokemon-details').show();
+                $('.hp strong').text("");
+                $('.attack strong').text("");
+                $('.defense strong').text("");
+                $('.special-attack strong').text("");
+                $('.special-defense strong').text("");
+                $('.speed strong').text("");
+
 
                 $('.close').on('click', function(e){
                     $('.pokemon-details').hide();
