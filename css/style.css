@@ -52,7 +52,8 @@ header span{
     padding:18px;
 }
 #pokemonList li:hover{
-    color: gray;
+    /* color: gray; */
+    color:#b5cfab;
 }
 .showInfo{
     margin-left: 10px;
@@ -60,7 +61,7 @@ header span{
     min-width: 50px;
 }
 .showInfo:hover{
-    color: gray;
+    color:#b5cfab;
 }
 .pokemon-details{
     padding: 20px;
@@ -103,7 +104,8 @@ header span{
     cursor: pointer;
 }
 .paginationButton:hover{
-    color: gray;
+    color:#b5cfab;
+    /* color: gray; */
 }
 img{
     height: 100%;
