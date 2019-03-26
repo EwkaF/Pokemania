@@ -2,7 +2,7 @@ $(function () {
 
     var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
     var nextUrl = url + '/' + '?limit=10&offset=';
-    var evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
+    // var evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
     var offset = 0;
 
     $('.pokemon-details').hide();
