@@ -133,10 +133,10 @@ $(function () {
                 let speed = $('.speed strong');
                 speed.text(onePokemon.stats[0].base_stat);
 
-                $('.pokemon-details').show();
+                $('.pokemon-details').show('slow');
 
                 $('.close').on('click', function (e) {
-                    $('.pokemon-details').hide();
+                    $('.pokemon-details').hide('slow');
                 });
 
 
@@ -147,7 +147,7 @@ $(function () {
                 $('.pokemon-image').attr('src', "logo.png");
                 $('.name strong').text("");
                 $('.type strong').text("")
-                $('.pokemon-details').show();
+                $('.pokemon-details').show('slow');
                 $('.hp strong').text("");
                 $('.attack strong').text("");
                 $('.defense strong').text("");
@@ -157,7 +157,7 @@ $(function () {
 
 
                 $('.close').on('click', function (e) {
-                    $('.pokemon-details').hide();
+                    $('.pokemon-details').hide('slow');
                 });
             }
 
