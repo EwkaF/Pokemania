@@ -7,6 +7,11 @@ $(function () {
 
     $('.pokemon-details').hide();
 
+    let value = $('input').val();
+   
+  
+
+
     function loadContent() {
 
         function loadPagination(number) {
@@ -21,6 +26,7 @@ $(function () {
             }
 
         }
+
 
         function loadPokemon(pokemon) {
 
@@ -185,6 +191,28 @@ $(function () {
             })
         }
 
+//search bar -not working yet
+        $('.search-button').on('click', function(e){
+            e.preventDefault()
+            let value = $('input').val();
+            // console.log(value);
+            console.log("OK")
+            $.ajax({
+                url: 'https://pokeapi.co/api/v2/pokemon' + '/' + $('input').val()
+    
+            }).done(function (response) {
+                $('#pokemonList').html("");
+                console.log(response)
+                loadPokemon(response.results);
+            }).fail(function (message) {
+                console.log(message);
+                console.log("brak danych")
+    
+            })
+    
+        })
+
+//end
 
         $.ajax({
             url: url
