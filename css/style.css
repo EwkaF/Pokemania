@@ -26,10 +26,12 @@ header{
     justify-content: center;
     align-items: center;
 }
-header span{
+.title span{
     font-style: italic;
 }
-
+.search{
+    min-height: 30px;
+}
 .hr{
     height:0.75vh;
     background-color:#ef5350;
