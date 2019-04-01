@@ -53,6 +53,8 @@ $(function () {
                 $('#pokemonList').append(li)
             }
 
+         
+
             function loadPokemonDetails(onePokemon) {
 
                 $('.name span').text("#" + onePokemon.id)
@@ -189,28 +191,46 @@ $(function () {
 
                 })
             })
+
+
+
+            function loadSearchedPokemon(pokemon){
+                let li = $('<li>');
+                li.addClass('row')
+                let name = $('<h3>, {class: "name"}');
+                name.addClass('col');
+                name.text(pokemon.name);
+                let moreInfo = $('<button>Pokaż</button>');
+                moreInfo.addClass('showInfo col');
+                // moreInfo.attr('id', id);
+                li.append(name);
+                li.append(moreInfo);
+                $('#pokemonList').append(li)
+            }
+    
+    //search bar -not working yet
+            $('.search-button').on('click', function(e){
+                e.preventDefault()
+                let value = $('input').val();
+                // console.log(value);
+                console.log("OK")
+                $.ajax({
+                    url: 'https://pokeapi.co/api/v2/pokemon' + '/' + $('input').val()
+        
+                }).done(function (response) {
+                    $('#pokemonList').html("");
+                    console.log(response)
+                    loadSearchedPokemon(response);
+                }).fail(function (message) {
+                    console.log(message);
+                    console.log("brak danych");
+        
+                })
+        
+            })
         }
 
-//search bar -not working yet
-        $('.search-button').on('click', function(e){
-            e.preventDefault()
-            let value = $('input').val();
-            // console.log(value);
-            console.log("OK")
-            $.ajax({
-                url: 'https://pokeapi.co/api/v2/pokemon' + '/' + $('input').val()
-    
-            }).done(function (response) {
-                $('#pokemonList').html("");
-                console.log(response)
-                loadPokemon(response.results);
-            }).fail(function (message) {
-                console.log(message);
-                console.log("brak danych")
-    
-            })
-    
-        })
+      
 
 //end
 
