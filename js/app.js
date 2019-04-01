@@ -27,27 +27,33 @@ $(function () {
 
         }
 
+        // function getId(url){
+        //     return url.slice(34,-1)
+        // }
 
         function loadPokemon(pokemon) {
 
             for (var i = 0; i < pokemon.length; i++) {
 
-                let id = 0;
-                if (offset === 0) {
-                    id = i + 1;
-                }
-                else {
-                    id = i + 1 + offset;
-                }
+                // let id = 0;
+                // if (offset === 0) {
+                //     id = i + 1;
+                // }
+                // else {
+                //     id = i + 1 + offset;
+                // }
+                let pokemonId = pokemon[i].url.slice(34,-1)
+                console.log(pokemonId)
 
                 let li = $('<li>');
                 li.addClass('row')
                 let name = $('<h3>, {class: "name"}');
                 name.addClass('col');
-                name.text("#" + (id) + ". " + pokemon[i].name);
+                // name.text("#" + (id) + ". " + pokemon[i].name);
+                name.text("#" + (pokemonId) + ". " + pokemon[i].name);
                 let moreInfo = $('<button>Pokaż</button>');
                 moreInfo.addClass('showInfo col');
-                moreInfo.attr('id', id);
+                moreInfo.attr('id', pokemonId);
                 li.append(name);
                 li.append(moreInfo);
                 $('#pokemonList').append(li)
@@ -173,6 +179,7 @@ $(function () {
 
                 console.log("pokazuje wiecej");
                 console.log($(this)[0].id);
+                console.log($(this))
                 // thisButton = $(this);
                 // let pokemonId = thisButton[0].id;
 
@@ -202,7 +209,8 @@ $(function () {
                 name.text(pokemon.name);
                 let moreInfo = $('<button>Pokaż</button>');
                 moreInfo.addClass('showInfo col');
-                // moreInfo.attr('id', id);
+                let pokemonId = pokemon.species.url.slice(34,-1)
+                moreInfo.attr('id', pokemonId);
                 li.append(name);
                 li.append(moreInfo);
                 $('#pokemonList').append(li)
