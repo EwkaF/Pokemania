@@ -27,21 +27,11 @@ $(function () {
 
         }
 
-        // function getId(url){
-        //     return url.slice(34,-1)
-        // }
-
         function loadPokemon(pokemon) {
 
             for (var i = 0; i < pokemon.length; i++) {
 
-                // let id = 0;
-                // if (offset === 0) {
-                //     id = i + 1;
-                // }
-                // else {
-                //     id = i + 1 + offset;
-                // }
+
                 let pokemonId = pokemon[i].url.slice(34,-1)
                 console.log(pokemonId)
 
@@ -49,7 +39,6 @@ $(function () {
                 li.addClass('row')
                 let name = $('<h3>, {class: "name"}');
                 name.addClass('col');
-                // name.text("#" + (id) + ". " + pokemon[i].name);
                 name.text("#" + (pokemonId) + ". " + pokemon[i].name);
                 let moreInfo = $('<button>Pokaż</button>');
                 moreInfo.addClass('showInfo col');
@@ -206,10 +195,11 @@ $(function () {
                 li.addClass('row')
                 let name = $('<h3>, {class: "name"}');
                 name.addClass('col');
-                name.text(pokemon.name);
+                let pokemonId = pokemon.species.url.slice(42,-1);
+                name.text('#' + pokemonId +". " + pokemon.name);
                 let moreInfo = $('<button>Pokaż</button>');
                 moreInfo.addClass('showInfo col');
-                let pokemonId = pokemon.species.url.slice(42,-1);
+                
                 console.log(pokemon.species.url)
                 moreInfo.attr('id', pokemonId);
                 li.append(name);
