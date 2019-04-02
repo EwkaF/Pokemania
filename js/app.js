@@ -209,7 +209,8 @@ $(function () {
                 name.text(pokemon.name);
                 let moreInfo = $('<button>Pokaż</button>');
                 moreInfo.addClass('showInfo col');
-                let pokemonId = pokemon.species.url.slice(34,-1)
+                let pokemonId = pokemon.species.url.slice(42,-1);
+                console.log(pokemon.species.url)
                 moreInfo.attr('id', pokemonId);
                 li.append(name);
                 li.append(moreInfo);
