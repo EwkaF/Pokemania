@@ -2,14 +2,13 @@ $(function () {
 
     var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
     var nextUrl = url + '/' + '?limit=10&offset=';
-    // var evolutionUrl = 'https://pokeapi.co/api/v2/evolution-chain/1/';
     var offset = 0;
 
     $('.pokemon-details').hide();
 
     let value = $('input').val();
-   
-  
+
+
 
 
     function loadContent() {
@@ -31,10 +30,8 @@ $(function () {
 
             for (var i = 0; i < pokemon.length; i++) {
 
-
-                let pokemonId = pokemon[i].url.slice(34,-1)
-                console.log(pokemonId)
-
+                let pokemonId = pokemon[i].url.slice(34, -1)
+                // console.log(pokemonId)
                 let li = $('<li>');
                 li.addClass('row')
                 let name = $('<h3>, {class: "name"}');
@@ -48,7 +45,7 @@ $(function () {
                 $('#pokemonList').append(li)
             }
 
-         
+
 
             function loadPokemonDetails(onePokemon) {
 
@@ -117,7 +114,6 @@ $(function () {
                         case "dark":
                             pokemonType = "mroczny"
                             break;
-
                     }
                     typ += pokemonType + ' ';
 
@@ -166,12 +162,8 @@ $(function () {
 
             $('#pokemonList').on('click', '.showInfo', function (e) {
 
-                console.log("pokazuje wiecej");
-                console.log($(this)[0].id);
-                console.log($(this))
-                // thisButton = $(this);
-                // let pokemonId = thisButton[0].id;
-
+                // console.log("pokazuje wiecej");
+                // console.log($(this)[0].id);
                 let pokemonId = $(this)[0].id;
 
                 $.ajax({
@@ -190,32 +182,31 @@ $(function () {
 
 
 
-            function loadSearchedPokemon(pokemon){
+            function loadSearchedPokemon(pokemon) {
                 let li = $('<li>');
                 li.addClass('row')
                 let name = $('<h3>, {class: "name"}');
                 name.addClass('col');
-                let pokemonId = pokemon.species.url.slice(42,-1);
-                name.text('#' + pokemonId +". " + pokemon.name);
+                let pokemonId = pokemon.species.url.slice(42, -1);
+                name.text('#' + pokemonId + ". " + pokemon.name);
                 let moreInfo = $('<button>Pokaż</button>');
                 moreInfo.addClass('showInfo col');
-                
+
                 console.log(pokemon.species.url)
                 moreInfo.attr('id', pokemonId);
                 li.append(name);
                 li.append(moreInfo);
                 $('#pokemonList').append(li)
             }
-    
-    //search bar -not working yet
-            $('.search-button').on('click', function(e){
+
+            //search bar 
+            $('.search-button').on('click', function (e) {
                 e.preventDefault()
                 let value = $('input').val();
-                // console.log(value);
                 console.log("OK")
                 $.ajax({
                     url: 'https://pokeapi.co/api/v2/pokemon' + '/' + $('input').val()
-        
+
                 }).done(function (response) {
                     $('#pokemonList').html("");
                     console.log(response)
@@ -223,15 +214,12 @@ $(function () {
                 }).fail(function (message) {
                     console.log(message);
                     console.log("brak danych");
-        
+
                 })
-        
+
             })
         }
 
-      
-
-//end
 
         $.ajax({
             url: url
