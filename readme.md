@@ -1,8 +1,6 @@
 ## Pokemania
  
-in progress...
-
-Basic data and pictures  about Pokemon.
+This app shows basic data about Pokemon and pictures .
 All the data are comes from https://pokeapi.co/
 
 The main purpose of this application was to work and study with Ajax and API.
